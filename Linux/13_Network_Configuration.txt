@@ -1,0 +1,15 @@
+echo "--- System Hostname ---" 
+hostname  
+echo "" 
+echo "--- IP Addresses of Network Interfaces ---" 
+ip addr show | grep -E 'inet |^[0-9]+:'  
+echo "" 
+echo "--- Routing Table ---" 
+ip route  
+echo "" 
+echo "--- DNS Server Configuration ---" 
+cat /etc/resolv.conf  
+echo "" 
+echo "Enter remote host to test (e.g. 8.8.8.8):" 
+read remotehost echo "Testing connectivity to $remotehost ..." 
+ping -c 4 $remotehost 
